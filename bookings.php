@@ -222,9 +222,9 @@ tr:hover {
 <?php if(!$type): ?>
     Event Type:
     <select name="event_type" required>
-        <option value="Binyag">Binyag</option>
+        <option value="Christening">Christening</option>
         <option value="Wedding">Wedding</option>
-        <option value="Misa sa Patay">Misa sa Patay</option>
+        <option value="Funeral Mass">Funeral Mass</option>
     </select>
 <?php else: ?>
     <input type="hidden" name="event_type" value="<?php echo $type; ?>">
@@ -394,9 +394,9 @@ table tr:hover {
             <?php if(!$type): ?>
                 <label>Event Type</label>
                 <select name="event_type" required>
-                    <option value="Binyag">Binyag</option>
+                    <option value="Christening">Christening</option>
                     <option value="Wedding">Wedding</option>
-                    <option value="Misa sa Patay">Misa sa Patay</option>
+                    <option value="Funeral Mass">Funeral Mass</option>
                 </select>
             <?php else: ?>
                 <input type="hidden" name="event_type" value="<?php echo $type; ?>">
@@ -465,4 +465,3 @@ table tr:hover {
     </div>
 
 </div>
->>>>>>> 9c194cfaf6bbc38594f7fb565efab438e1853ca8
