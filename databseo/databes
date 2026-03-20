@@ -9,7 +9,7 @@ CREATE TABLE staff (
 -- Bookings (baptisms, weddings, funeral masses)
 CREATE TABLE bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    event_type ENUM('Binyag','Wedding','Misa sa Patay') NOT NULL,
+    event_type ENUM('Christening','Wedding','Funeral Mass) NOT NULL,
     person_name VARCHAR(100) NOT NULL,
     event_date DATE NOT NULL,
     event_time TIME NOT NULL,
