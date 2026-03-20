@@ -7,59 +7,129 @@ include 'includes/header.php';
 /* =======================
    COUNT BOOKINGS
 ======================= */
-
-// Binyag
 $binyag = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Binyag'")->fetch_assoc()['total'];
-
-// Wedding
 $wedding = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Wedding'")->fetch_assoc()['total'];
-
-// Funeral Mass
 $funeral = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Misa sa Patay'")->fetch_assoc()['total'];
-
-// Regular Mass (from mass_schedule table)
 $mass = $conn->query("SELECT COUNT(*) as total FROM mass_schedule")->fetch_assoc()['total'];
 ?>
 
-<h1>Welcome, <?php echo $_SESSION['staff_name']; ?></h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #f5f1e6, #e8dcc7);
+            color: #4b2e2e;
+        }
 
-<h2>Dashboard Overview</h2>
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
 
-<!-- HOME AND ADD BOOKING BUTTONS -->
-<div style="margin-bottom:20px; display:flex; gap:10px;">
-    <a href="dashboard.php" style="padding:10px 20px; background:#2196f3; color:white; text-decoration:none; border-radius:5px;">Home</a>
-    <a href="bookings.php" style="padding:10px 20px; background:#4caf50; color:white; text-decoration:none; border-radius:5px;">Add Booking</a>
-</div>
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
 
-<!-- EVENT CARDS -->
-<div style="display:flex; gap:20px; flex-wrap:wrap;">
+        /* BUTTONS */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
 
-    <a href="bookings.php?type=Binyag" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#e3f2fd;">
+        .btn-group a {
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-home { background: #2196f3; }
+        .btn-home:hover { background: #1976d2; }
+
+        .btn-add { background: #4caf50; }
+        .btn-add:hover { background: #388e3c; }
+
+        /* DASHBOARD CARDS */
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1 1 200px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            color: #4b2e2e;
+            text-decoration: none;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+
+        .card.christening { background: #e3f2fd; }
+        .card.wedding { background: #fff3e0; }
+        .card.funeral { background: #ffebee; }
+        .card.regular { background: #e8f5e9; }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome, <?php echo $_SESSION['staff_name']; ?></h1>
+    <h2>Dashboard Overview</h2>
+
+    <!-- BUTTONS -->
+    <div class="btn-group">
+        <a href="dashboard.php" class="btn-home">Home</a>
+        <a href="bookings.php" class="btn-add">Add Booking</a>
+    </div>
+
+    <!-- DASHBOARD CARDS -->
+    <div class="cards">
+        <a href="bookings.php?type=Binyag" class="card christening">
             <h3>Christening</h3>
             <p><?php echo $binyag; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="bookings.php?type=Wedding" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#fff3e0;">
+        <a href="bookings.php?type=Wedding" class="card wedding">
             <h3>Wedding</h3>
             <p><?php echo $wedding; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="bookings.php?type=Misa sa Patay" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#ffebee;">
+        <a href="bookings.php?type=Misa sa Patay" class="card funeral">
             <h3>Funeral Mass</h3>
             <p><?php echo $funeral; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="schedule.php" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#e8f5e9;">
+        <a href="schedule.php" class="card regular">
             <h3>Regular Mass</h3>
             <p><?php echo $mass; ?></p>
-        </div>
-    </a>
-
+        </a>
+    </div>
 </div>
+</body>
+</html>

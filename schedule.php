@@ -29,6 +29,7 @@ if(isset($_POST['add_schedule'])){
 
 <!-- Add Regular Mass Form -->
 <h2>Add Regular Mass</h2>
+<link rel="stylesheet" href="css/style.css">
 <form method="POST">
     Day:
     <select name="day" required>
