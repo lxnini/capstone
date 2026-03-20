@@ -38,7 +38,6 @@ if(isset($_GET['delete'])){
 $type = isset($_GET['type']) ? $_GET['type'] : '';
 ?>
 
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
