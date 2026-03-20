@@ -110,7 +110,7 @@ $mass = $conn->query("SELECT COUNT(*) as total FROM mass_schedule")->fetch_assoc
 
     <!-- DASHBOARD CARDS -->
     <div class="cards">
-        <a href="bookings.php?type=Binyag" class="card christening">
+        <a href="bookings.php?type=Christening" class="card Christening">
             <h3>Christening</h3>
             <p><?php echo $binyag; ?></p>
         </a>
@@ -120,12 +120,12 @@ $mass = $conn->query("SELECT COUNT(*) as total FROM mass_schedule")->fetch_assoc
             <p><?php echo $wedding; ?></p>
         </a>
 
-        <a href="bookings.php?type=Misa sa Patay" class="card funeral">
+        <a href="bookings.php?type=Funeral Mass" class="card Funeral Mass">
             <h3>Funeral Mass</h3>
             <p><?php echo $funeral; ?></p>
         </a>
 
-        <a href="schedule.php" class="card regular">
+        <a href="schedule.php" class="card Regular Mass">
             <h3>Regular Mass</h3>
             <p><?php echo $mass; ?></p>
         </a>
