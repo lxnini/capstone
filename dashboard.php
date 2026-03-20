@@ -25,6 +25,13 @@ $mass = $conn->query("SELECT COUNT(*) as total FROM mass_schedule")->fetch_assoc
 
 <h2>Dashboard Overview</h2>
 
+<!-- HOME AND ADD BOOKING BUTTONS -->
+<div style="margin-bottom:20px; display:flex; gap:10px;">
+    <a href="dashboard.php" style="padding:10px 20px; background:#2196f3; color:white; text-decoration:none; border-radius:5px;">Home</a>
+    <a href="bookings.php" style="padding:10px 20px; background:#4caf50; color:white; text-decoration:none; border-radius:5px;">Add Booking</a>
+</div>
+
+<!-- EVENT CARDS -->
 <div style="display:flex; gap:20px; flex-wrap:wrap;">
 
     <a href="bookings.php?type=Binyag" style="text-decoration:none;">
