@@ -8,58 +8,127 @@ include 'includes/header.php';
    COUNT BOOKINGS
 ======================= */
 
-// Binyag
 $binyag = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Binyag'")->fetch_assoc()['total'];
-
-// Wedding
 $wedding = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Wedding'")->fetch_assoc()['total'];
-
-// Funeral Mass
 $funeral = $conn->query("SELECT COUNT(*) as total FROM bookings WHERE event_type='Misa sa Patay'")->fetch_assoc()['total'];
-
-// Regular Mass (from mass_schedule table)
 $mass = $conn->query("SELECT COUNT(*) as total FROM mass_schedule")->fetch_assoc()['total'];
 ?>
 
-<h1>Welcome, <?php echo $_SESSION['staff_name']; ?></h1>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
 
-<h2>Dashboard Overview</h2>
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
 
-<!-- HOME AND ADD BOOKING BUTTONS -->
-<div style="margin-bottom:20px; display:flex; gap:10px;">
-    <a href="dashboard.php" style="padding:10px 20px; background:#2196f3; color:white; text-decoration:none; border-radius:5px;">Home</a>
-    <a href="bookings.php" style="padding:10px 20px; background:#4caf50; color:white; text-decoration:none; border-radius:5px;">Add Booking</a>
-</div>
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
 
-<!-- EVENT CARDS -->
-<div style="display:flex; gap:20px; flex-wrap:wrap;">
+h1 {
+    margin-bottom: 10px;
+}
 
-    <a href="bookings.php?type=Binyag" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#e3f2fd;">
+.top-buttons {
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-blue {
+    background: #2196f3;
+}
+
+.btn-green {
+    background: #4CAF50;
+}
+
+/* SAME STYLE AS BOOKINGS TABLE FEEL */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.box {
+    background: #fff;
+    padding: 20px;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.box:hover {
+    background: #f1f1f1;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.box p {
+    font-size: 22px;
+    font-weight: bold;
+}
+</style>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="card">
+        <h1>Welcome, <?php echo $_SESSION['staff_name']; ?></h1>
+        <h3>Dashboard Overview</h3>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="top-buttons">
+        <a href="dashboard.php" class="btn btn-blue">Home</a>
+        <a href="bookings.php" class="btn btn-green">Add Booking</a>
+    </div>
+
+    <!-- SIMPLE BOXES (same feel sa bookings) -->
+    <div class="cards">
+
+        <a href="bookings.php?type=Binyag" class="box">
             <h3>Christening</h3>
             <p><?php echo $binyag; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="bookings.php?type=Wedding" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#fff3e0;">
+        <a href="bookings.php?type=Wedding" class="box">
             <h3>Wedding</h3>
             <p><?php echo $wedding; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="bookings.php?type=Misa sa Patay" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#ffebee;">
+        <a href="bookings.php?type=Misa sa Patay" class="box">
             <h3>Funeral Mass</h3>
             <p><?php echo $funeral; ?></p>
-        </div>
-    </a>
+        </a>
 
-    <a href="schedule.php" style="text-decoration:none;">
-        <div style="border:1px solid black; padding:20px; width:200px; text-align:center; background:#e8f5e9;">
+        <a href="schedule.php" class="box">
             <h3>Regular Mass</h3>
             <p><?php echo $mass; ?></p>
-        </div>
-    </a>
+        </a>
+
+    </div>
 
 </div>
